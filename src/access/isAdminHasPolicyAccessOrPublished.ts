@@ -1,10 +1,10 @@
-import { Access } from "payload/config";
+import { Access } from 'payload/config'
 
 export const isAdminOrHasPolicyAccessOrPublished: Access = ({ req: { user } }) => {
   // Need to be logged in
   if (user) {
     // If user has role of 'admin'
-    if (user.roles.includes('admin')) return true;
+    if (user.roles.includes('admin')) return true
 
     // If user has role of 'editor' and has access to a policy,
     // return a query constraint to restrict the documents this user can edit
@@ -14,15 +14,15 @@ export const isAdminOrHasPolicyAccessOrPublished: Access = ({ req: { user } }) =
         or: [
           {
             policy: {
-              in: user.policys
-            }
+              in: user.policys,
+            },
           },
           {
             policy: {
               exists: false,
-            }
-          }
-        ]
+            },
+          },
+        ],
       }
     }
   }
@@ -30,7 +30,7 @@ export const isAdminOrHasPolicyAccessOrPublished: Access = ({ req: { user } }) =
   // Non-logged in users can only read published docs
   return {
     _status: {
-      equals: 'published'
-    }
-  };
+      equals: 'published',
+    },
+  }
 }

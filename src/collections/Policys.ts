@@ -1,6 +1,6 @@
-import { CollectionConfig } from "payload/types";
-import { isAdmin } from "../access/isAdmin";
-import { isAdminOrHasPolicyAccess } from "../access/isAdminOrHasPolicyAccess";
+import { CollectionConfig } from 'payload/types'
+import { isAdmin } from '../access/isAdmin'
+import { isAdminOrHasPolicyAccess } from '../access/isAdminOrHasPolicyAccess'
 
 export const Policys: CollectionConfig = {
   slug: 'policys',
@@ -22,6 +22,6 @@ export const Policys: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-    }
-  ]
+    },
+  ],
 }
